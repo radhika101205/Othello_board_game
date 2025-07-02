@@ -1,67 +1,63 @@
-Console-Based Othello Game in C
-Overview
-This project is a console-based implementation of the classic board game Othello (Reversi), written from scratch in the C programming language. It allows two players to play alternately, flipping opponent pieces according to the game rules. The game features a full terminal-based UI with colored outputs and player prompts, providing a visually clear and interactive experience.
+# Console-Based Othello Game in C
 
-Game Rules
-The game is played on an 8x8 board.
+**File:** `othello_game.c`
 
-Players:
+## Overview
 
-Player 1 uses symbol 'X'
+This is a fully functional console-based implementation of the classic board game **Othello (Reversi)** written in **C**. It allows **two players** to play alternately, flipping opponent pieces using the standard Othello rules. The game uses terminal colors and formatted outputs to enhance user experience.
 
-Player 2 uses symbol 'O'
+---
 
-The game begins with four discs placed in the center of the board: two 'X' and two 'O', in a diagonal pattern.
+## Game Rules
 
-Players alternate turns and can only place a piece if it sandwiches at least one opponent piece between their new piece and another of their own (in any direction).
+- The game is played on an **8x8 board**.
+- **Player 1** uses the symbol `'X'`, and **Player 2** uses `'O'`.
+- The game starts with four pieces in the center (two `X`s and two `O`s in diagonal).
+- A move is valid only if it sandwiches at least one opponent's piece in any of the 8 directions.
+- If a player has **no valid move**, they must **pass**.
+- The game ends when:
+  - The board is full (`64 pieces`), or
+  - Neither player has a valid move, or
+  - One player's pieces are entirely removed.
 
-If a player has no valid moves, they must pass.
+---
 
-The game ends when:
+## Features
 
-The board is full, or
+- ✅ Full Othello flipping logic (supports all 8 directions)
+- ✅ Input validation and player prompts
+- ✅ Turn-based system with auto-passing
+- ✅ Colored terminal output using ANSI escape sequences
+- ✅ Final board display and winner declaration
+- ✅ Option to **restart** or **exit** after a game ends
 
-Neither player has any valid moves left, or
+---
 
-All of one type of piece has been eliminated.
+## Compilation Instructions
 
-Features
-✅ Full support for Othello flipping logic (8 directions)
+To compile and run the program, use a terminal with a C compiler such as `gcc`:
 
-✅ Input validation for moves and positions
-
-✅ Player turn handling and auto-passing if no valid moves
-
-✅ Colored and formatted output using ANSI escape sequences
-
-✅ Option to restart or exit the game after completion
-
-✅ Final board display and winner announcement
-
-Compilation Instructions
-To compile the game, use a C compiler such as gcc:
-
-bash
+```bash
 gcc othello_game.c -o othello_game
-To run the compiled program:
-
-bash
 ./othello_game
-Controls
-Players enter their moves using row and column numbers (1 to 8).
+```
+---
 
-Example input: 4 5 (places your piece in 4th row and 5th column)
+## Controls
 
-When prompted at the end:
+- Players enter moves as **row** and **column** numbers (from 1 to 8).
+  - Example: `4 5` places a piece in row 4, column 5.
+- At the end of the game:
+  - Press `1` to **restart**
+  - Press `0` to **exit**
+- If a player has no valid moves:
+  - Press `1` to **pass the turn**
 
-Enter 1 to restart the game
+---
 
-Enter 0 to exit the game
+## Sample Output
 
-If you have no valid moves, enter 1 to pass your turn
-
-Example Output
-text
+```text
 welcome to this othello adventure:
 Please enter player-1: Alice
 Please enter player-2: Bob
@@ -72,36 +68,45 @@ Alice's Turn (X)
 1 |    |    |    |    |    |    |    |    |
    ---- ---- ---- ---- ---- ---- ---- ----  
 ...
-Enter your input (row col): 5 4
-...
 WINNER IS X
 Would you like to end the game or restart?
 To RESTART press '1' to exit press '0':
-Code Structure Summary
-Function	Purpose
-main()	Runs the game loop and manages turns, board state, and UI
-declare_result()	Declares the result if the board is full and shows scores
-endgame()	Checks for early termination conditions
-flip()	Flips a disc to the opposite symbol
-check_valid()	Validates a potential sandwich move
-func()	Recursive logic to flip discs in valid directions
-Dependencies
-Standard C libraries:
+```
+---
 
-stdio.h
+## Code Structure
 
-stdlib.h
+| Function           | Description                                                  |
+|--------------------|--------------------------------------------------------------|
+| `main()`           | Runs the game loop, handles turns, input, and display.       |
+| `declare_result()` | Counts scores and checks for endgame on full board.          |
+| `endgame()`        | Ends game early if all pieces belong to one player.          |
+| `flip()`           | Flips a board cell from `X` to `O` or vice versa.            |
+| `check_valid()`    | Checks if a position is a valid candidate for flipping.      |
+| `func()`           | Recursively checks sandwich condition and flips accordingly. |
 
-string.h
+---
 
-Acknowledgment
-Course Instructor: Dr. Richa Singh
+## File Info
 
-Team Members:
+- **File:** `othello_game.c`
+- **Language:** C
+- **Type:** Console Game
+- **Dependencies:** Standard C libraries (`<stdio.h>`, `<stdlib.h>`, `<string.h>`)
 
-Nishu Verma
+---
 
-Sarah Fatima
+## Author
 
-Reshma Maurya
+This project was developed as a hands-on implementation of:
+- Game logic in C
+- Recursive algorithms
+- 2D array manipulation
+- Terminal UI formatting with ANSI escape codes
+
+---
+
+
+Enjoy the game! 
+
 
